@@ -1,0 +1,110 @@
+{
+    "sourceFile": "lib/controllers/search_controller.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 23,
+            "patches": [
+                {
+                    "date": 1691067730627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1691067737192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,8 @@\n+import 'package:shared_preferences/shared_preferences.dart';\r\n+\r\n+import '../models/user.dart';\r\n+\r\n Future<bool> addlink(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n"
+                },
+                {
+                    "date": 1691067746400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n import 'package:shared_preferences/shared_preferences.dart';\r\n \r\n+import '../constants.dart';\r\n import '../models/user.dart';\r\n \r\n-Future<bool> addlink(Map<String, String> body) async {\r\n+Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n   final response = await http.post(Uri.parse(linksUrl),\r\n"
+                },
+                {
+                    "date": 1691067761753,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import '../models/user.dart';\r\n \r\n Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n-  User user = userFromJson(prefs.getString('user')!);\r\n+  UserClass user = userFromJson(prefs.getString('user')!);\r\n \r\n   final response = await http.post(Uri.parse(linksUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n"
+                },
+                {
+                    "date": 1691067797721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import 'package:shared_preferences/shared_preferences.dart';\r\n \r\n import '../constants.dart';\r\n import '../models/user.dart';\r\n-\r\n+import 'package:http/http.dart' as http;\r\n Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   UserClass user = userFromJson(prefs.getString('user')!);\r\n \r\n"
+                },
+                {
+                    "date": 1691067809595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n \r\n import '../constants.dart';\r\n import '../models/user.dart';\r\n import 'package:http/http.dart' as http;\r\n+\r\n Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   UserClass user = userFromJson(prefs.getString('user')!);\r\n \r\n"
+                },
+                {
+                    "date": 1691067817286,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,12 @@\n import 'package:shared_preferences/shared_preferences.dart';\r\n \r\n import '../constants.dart';\r\n import '../models/user.dart';\r\n-import 'package:http/http.dart' as http;\r\n \r\n Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n-  UserClass user = userFromJson(prefs.getString('user')!);\r\n+  User user = userFromJson(prefs.getString('user')!);\r\n \r\n   final response = await http.post(Uri.parse(linksUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n"
+                },
+                {
+                    "date": 1691067876760,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import 'package:shared_preferences/shared_preferences.dart';\r\n \r\n import '../constants.dart';\r\n import '../models/user.dart';\r\n+import 'package:http/http.dart' as http;\r\n \r\n Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n@@ -10,9 +11,9 @@\n   final response = await http.post(Uri.parse(linksUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-    return true;\r\n+    return ;\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691067885809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,13 +7,13 @@\n Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n-  final response = await http.post(Uri.parse(linksUrl),\r\n+  final response = await http.post(Uri.parse(sear),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n     return ;\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691067903870,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,13 +7,13 @@\n Future<bool> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n-  final response = await http.post(Uri.parse(sear),\r\n+  final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-    return ;\r\n+  return \r\n   } else {\r\n     throw Exception('Failed to add');\r\n\\ No newline at end of file\n   }\r\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691067911170,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-  return \r\n+  // retuen ?\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691067975218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,17 +3,17 @@\n import '../constants.dart';\r\n import '../models/user.dart';\r\n import 'package:http/http.dart' as http;\r\n \r\n-Future<bool> performSearch(Map<String, String> body) async {\r\n+Future<UserClass> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-  // retuen ?\r\n+  // retuen ??\r\n   } else {\r\n     throw Exception('Failed to add');\r\n\\ No newline at end of file\n   }\r\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691067980812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-  // retuen ??\r\n+  return \r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691068005378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-  return \r\n+  return UserClass(.)\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691068013862,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-  return UserClass(.)\r\n+  return UserClass.fromJson(json)\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691068019697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-  return UserClass.fromJson(json)\r\n+  return UserClass.fromJson(response.)\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691068034639,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-  return UserClass.fromJson(response.)\r\n+    return UserClass.fromJson(response.body as Map<String, dynamic>);\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691068094548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-    return UserClass.fromJson(response.body as Map<String, dynamic>);\r\n+    \r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691068112591,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import '../constants.dart';\r\n import '../models/user.dart';\r\n import 'package:http/http.dart' as http;\r\n \r\n-Future<UserClass> performSearch(Map<String, String> body) async {\r\n+Future<ListUserClass> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n   final response = await http.post(Uri.parse(searchUrl),\r\n@@ -15,5 +15,5 @@\n     \r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n-}\n\\ No newline at end of file\n+}\r\n"
+                },
+                {
+                    "date": 1691068187112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,17 +3,19 @@\n import '../constants.dart';\r\n import '../models/user.dart';\r\n import 'package:http/http.dart' as http;\r\n \r\n-Future<ListUserClass> performSearch(Map<String, String> body) async {\r\n+Future<List<UserClass>> performSearch(Map<String, String> body) async {\r\n   final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-    \r\n+    final data = jsonDecode(response.body)['links'] as List<dynamic>;\r\n+\r\n+    return data.map((e) => Link.fromJson(e)).toList();\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691068195702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+import 'dart:convert';\r\n+\r\n import 'package:shared_preferences/shared_preferences.dart';\r\n \r\n import '../constants.dart';\r\n import '../models/user.dart';\r\n@@ -11,9 +13,9 @@\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n \r\n   if (response.statusCode == 200) {\r\n-    final data = jsonDecode(response.body)['links'] as List<dynamic>;\r\n+    final data = jsonDecode(response.body)['user'] as List<dynamic>;\r\n \r\n     return data.map((e) => Link.fromJson(e)).toList();\r\n   } else {\r\n     throw Exception('Failed to add');\r\n"
+                },
+                {
+                    "date": 1691068201410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \r\n   if (response.statusCode == 200) {\r\n     final data = jsonDecode(response.body)['user'] as List<dynamic>;\r\n \r\n-    return data.map((e) => Link.fromJson(e)).toList();\r\n+    return data.map((e) => UserClass.fromJson(e)).toList();\r\n   } else {\r\n     throw Exception('Failed to add');\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691069013179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,7 +16,7 @@\n   if (response.statusCode == 200) {\r\n     final data = jsonDecode(response.body)['user'] as List<dynamic>;\r\n     return data.map((e) => UserClass.fromJson(e)).toList();\r\n   } else {\r\n-    throw Exception('Failed to add');\r\n+    throw Exception('Failed to found the user');\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691069755295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,10 @@\n   User user = userFromJson(prefs.getString('user')!);\r\n \r\n   final response = await http.post(Uri.parse(searchUrl),\r\n       body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n-\r\n+  print(body);\r\n   if (response.statusCode == 200) {\r\n-    \r\n     final data = jsonDecode(response.body)['user'] as List<dynamic>;\r\n     return data.map((e) => UserClass.fromJson(e)).toList();\r\n   } else {\r\n     throw Exception('Failed to found the user');\r\n"
+                }
+            ],
+            "date": 1691067730627,
+            "name": "Commit-0",
+            "content": "Future<bool> addlink(Map<String, String> body) async {\r\n  final SharedPreferences prefs = await SharedPreferences.getInstance();\r\n  User user = userFromJson(prefs.getString('user')!);\r\n\r\n  final response = await http.post(Uri.parse(linksUrl),\r\n      body: body, headers: {'Authorization': 'Bearer ${user.token}'});\r\n\r\n  if (response.statusCode == 200) {\r\n    return true;\r\n  } else {\r\n    throw Exception('Failed to add');\r\n  }\r\n}"
+        }
+    ]
+}

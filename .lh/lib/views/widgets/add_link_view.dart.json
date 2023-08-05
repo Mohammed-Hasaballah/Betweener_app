@@ -1,0 +1,46 @@
+{
+    "sourceFile": "lib/views/widgets/add_link_view.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1691062600828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1691062606775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n import 'package:flutter/material.dart';\r\n \r\n-class MyWidget extends StatefulWidget {\r\n-  const MyWidget({super.key});\r\n+class AddLinkView extends StatefulWidget {\r\n+  const AddLinkView({super.key});\r\n \r\n   @override\r\n-  State<MyWidget> createState() => _MyWidgetState();\r\n+  State<AddLinkView> createState() => _AddLinkViewState();\r\n }\r\n \r\n-class _MyWidgetState extends State<MyWidget> {\r\n+class _AddLinkViewState extends State<AddLinkView> {\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return const Placeholder();\r\n   }\r\n"
+                },
+                {
+                    "date": 1691062623056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import 'package:flutter/material.dart';\r\n \r\n class AddLinkView extends StatefulWidget {\r\n+   static String id = '/loginView';\r\n   const AddLinkView({super.key});\r\n \r\n   @override\r\n   State<AddLinkView> createState() => _AddLinkViewState();\r\n"
+                },
+                {
+                    "date": 1691062628266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import 'package:flutter/material.dart';\r\n \r\n class AddLinkView extends StatefulWidget {\r\n-   static String id = '/loginView';\r\n+   static String id = '/addLinkView';\r\n   const AddLinkView({super.key});\r\n \r\n   @override\r\n   State<AddLinkView> createState() => _AddLinkViewState();\r\n"
+                },
+                {
+                    "date": 1691062728577,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,19 @@\n import 'package:flutter/material.dart';\r\n \r\n class AddLinkView extends StatefulWidget {\r\n-   static String id = '/addLinkView';\r\n+  static String id = '/addLinkView';\r\n   const AddLinkView({super.key});\r\n \r\n   @override\r\n   State<AddLinkView> createState() => _AddLinkViewState();\r\n }\r\n \r\n class _AddLinkViewState extends State<AddLinkView> {\r\n+  TextEditingController emailController = TextEditingController();\r\n+  TextEditingController passwordController = TextEditingController();\r\n+  final _formKey = GlobalKey<FormState>();\r\n   @override\r\n\\ No newline at end of file\n   Widget build(BuildContext context) {\r\n     return const Placeholder();\r\n   }\r\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691062743720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,12 +8,12 @@\n   State<AddLinkView> createState() => _AddLinkViewState();\r\n }\r\n \r\n class _AddLinkViewState extends State<AddLinkView> {\r\n-  TextEditingController emailController = TextEditingController();\r\n+  TextEditingController titleController = TextEditingController();\r\n   TextEditingController passwordController = TextEditingController();\r\n   final _formKey = GlobalKey<FormState>();\r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return const Placeholder();\r\n   }\r\n\\ No newline at end of file\n-}\n+}\r\n"
+                },
+                {
+                    "date": 1691062752207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n   TextEditingController linkController = TextEditingController();\r\n   final _formKey = GlobalKey<FormState>();\r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Placeholder();\r\n+    return const Scaffold();\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691062762600,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   TextEditingController linkController = TextEditingController();\r\n   final _formKey = GlobalKey<FormState>();\r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Scaffold(\r\n+    return   Scaffold(\r\n       appBar: AppBar(),\r\n     );\r\n   }\r\n }\r\n"
+                }
+            ],
+            "date": 1691062600828,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass MyWidget extends StatefulWidget {\r\n  const MyWidget({super.key});\r\n\r\n  @override\r\n  State<MyWidget> createState() => _MyWidgetState();\r\n}\r\n\r\nclass _MyWidgetState extends State<MyWidget> {\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Placeholder();\r\n  }\r\n}"
+        }
+    ]
+}

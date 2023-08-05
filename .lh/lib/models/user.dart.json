@@ -1,0 +1,42 @@
+{
+    "sourceFile": "lib/models/user.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1691264191892,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1691264200143,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -53,8 +53,9 @@\n     this.country,\r\n     this.ip,\r\n     this.long,\r\n     this.lat,\r\n+    \r\n   });\r\n \r\n   factory UserClass.fromJson(Map<String, dynamic> json) => UserClass(\r\n         id: json[\"id\"],\r\n"
+                },
+                {
+                    "date": 1691264206248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n   dynamic country;\r\n   dynamic ip;\r\n   dynamic long;\r\n   dynamic lat;\r\n-  final List<Link> links;\r\n+    List<Link> links;\r\n \r\n   UserClass({\r\n     this.id,\r\n     this.name,\r\n@@ -53,9 +53,9 @@\n     this.country,\r\n     this.ip,\r\n     this.long,\r\n     this.lat,\r\n-    \r\n+    required this.links,\r\n   });\r\n \r\n   factory UserClass.fromJson(Map<String, dynamic> json) => UserClass(\r\n         id: json[\"id\"],\r\n"
+                },
+                {
+                    "date": 1691264211523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,10 @@\n //     final user = userFromJson(jsonString);\r\n \r\n import 'dart:convert';\r\n \r\n+import 'link.dart';\r\n+\r\n User userFromJson(String str) => User.fromJson(json.decode(str));\r\n \r\n String userToJson(User data) => json.encode(data.toJson());\r\n \r\n@@ -53,9 +55,9 @@\n     this.country,\r\n     this.ip,\r\n     this.long,\r\n     this.lat,\r\n-    required this.links,\r\n+      this.links,\r\n   });\r\n \r\n   factory UserClass.fromJson(Map<String, dynamic> json) => UserClass(\r\n         id: json[\"id\"],\r\n"
+                },
+                {
+                    "date": 1691264228108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n   dynamic country;\r\n   dynamic ip;\r\n   dynamic long;\r\n   dynamic lat;\r\n-    List<Link> links;\r\n+    List<Link>? links;\r\n \r\n   UserClass({\r\n     this.id,\r\n     this.name,\r\n"
+                },
+                {
+                    "date": 1691267901040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n   dynamic country;\r\n   dynamic ip;\r\n   dynamic long;\r\n   dynamic lat;\r\n-    List<Link>? links;\r\n+  List<Link>? links;\r\n \r\n   UserClass({\r\n     this.id,\r\n     this.name,\r\n@@ -55,9 +55,9 @@\n     this.country,\r\n     this.ip,\r\n     this.long,\r\n     this.lat,\r\n-      this.links,\r\n+    this.links,\r\n   });\r\n \r\n   factory UserClass.fromJson(Map<String, dynamic> json) => UserClass(\r\n         id: json[\"id\"],\r\n@@ -70,8 +70,11 @@\n         country: json[\"country\"],\r\n         ip: json[\"ip\"],\r\n         long: json[\"long\"],\r\n         lat: json[\"lat\"],\r\n+        links: json[\"links\"] == null\r\n+            ? []\r\n+            : List<Link>.from(json[\"links\"]!.map((x) => Link.fromJson(x))),\r\n       );\r\n \r\n   Map<String, dynamic> toJson() => {\r\n         \"id\": id,\r\n"
+                },
+                {
+                    "date": 1691267906474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,6 +87,7 @@\n         \"country\": country,\r\n         \"ip\": ip,\r\n         \"long\": long,\r\n         \"lat\": lat,\r\n+         \"links\": links,\r\n       };\r\n }\r\n"
+                }
+            ],
+            "date": 1691264191892,
+            "name": "Commit-0",
+            "content": "// To parse this JSON data, do\r\n//\r\n//     final user = userFromJson(jsonString);\r\n\r\nimport 'dart:convert';\r\n\r\nUser userFromJson(String str) => User.fromJson(json.decode(str));\r\n\r\nString userToJson(User data) => json.encode(data.toJson());\r\n\r\nclass User {\r\n  UserClass? user;\r\n  String? token;\r\n\r\n  User({\r\n    this.user,\r\n    this.token,\r\n  });\r\n\r\n  factory User.fromJson(Map<String, dynamic> json) => User(\r\n        user: json[\"user\"] == null ? null : UserClass.fromJson(json[\"user\"]),\r\n        token: json[\"token\"],\r\n      );\r\n\r\n  Map<String, dynamic> toJson() => {\r\n        \"user\": user?.toJson(),\r\n        \"token\": token,\r\n      };\r\n}\r\n\r\nclass UserClass {\r\n  int? id;\r\n  String? name;\r\n  String? email;\r\n  dynamic emailVerifiedAt;\r\n  String? createdAt;\r\n  String? updatedAt;\r\n  int? isActive;\r\n  dynamic country;\r\n  dynamic ip;\r\n  dynamic long;\r\n  dynamic lat;\r\n  final List<Link> links;\r\n\r\n  UserClass({\r\n    this.id,\r\n    this.name,\r\n    this.email,\r\n    this.emailVerifiedAt,\r\n    this.createdAt,\r\n    this.updatedAt,\r\n    this.isActive,\r\n    this.country,\r\n    this.ip,\r\n    this.long,\r\n    this.lat,\r\n  });\r\n\r\n  factory UserClass.fromJson(Map<String, dynamic> json) => UserClass(\r\n        id: json[\"id\"],\r\n        name: json[\"name\"],\r\n        email: json[\"email\"],\r\n        emailVerifiedAt: json[\"email_verified_at\"],\r\n        createdAt: json[\"created_at\"],\r\n        updatedAt: json[\"updated_at\"],\r\n        isActive: json[\"isActive\"],\r\n        country: json[\"country\"],\r\n        ip: json[\"ip\"],\r\n        long: json[\"long\"],\r\n        lat: json[\"lat\"],\r\n      );\r\n\r\n  Map<String, dynamic> toJson() => {\r\n        \"id\": id,\r\n        \"name\": name,\r\n        \"email\": email,\r\n        \"email_verified_at\": emailVerifiedAt,\r\n        \"created_at\": createdAt,\r\n        \"updated_at\": updatedAt,\r\n        \"isActive\": isActive,\r\n        \"country\": country,\r\n        \"ip\": ip,\r\n        \"long\": long,\r\n        \"lat\": lat,\r\n      };\r\n}\r\n"
+        }
+    ]
+}

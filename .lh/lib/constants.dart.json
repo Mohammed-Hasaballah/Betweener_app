@@ -1,0 +1,66 @@
+{
+    "sourceFile": "lib/constants.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 12,
+            "patches": [
+                {
+                    "date": 1691064358245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1691067438036,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n // endpoints==================\r\n const baseUrl = 'http://192.168.88.245:8000/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n+const search\r\n \r\n // ============= STYLE CONSTS ==============\r\n \r\n const kScaffoldColor = Color(0xffFDFDFD);\r\n"
+                },
+                {
+                    "date": 1691067443483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n // endpoints==================\r\n const baseUrl = 'http://192.168.88.245:8000/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n-const search\r\n+const searchUrl = '$baseUrl/links';\r\n \r\n // ============= STYLE CONSTS ==============\r\n \r\n const kScaffoldColor = Color(0xffFDFDFD);\r\n"
+                },
+                {
+                    "date": 1691160048566,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n import 'package:flutter/material.dart';\r\n \r\n // endpoints==================\r\n-const baseUrl = 'http://192.168.88.245:8000/api';\r\n+const baseUrl = '192|UxxajaTmCpQEs9cyjPWdGuIWSKB5BrVebo3vCmwq';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n-const searchUrl = '$baseUrl/links';\r\n+const searchUrl = '$baseUrl/search';\r\n \r\n // ============= STYLE CONSTS ==============\r\n \r\n const kScaffoldColor = Color(0xffFDFDFD);\r\n"
+                },
+                {
+                    "date": 1691173973672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import 'package:flutter/material.dart';\r\n \r\n // endpoints==================\r\n-const baseUrl = '192|UxxajaTmCpQEs9cyjPWdGuIWSKB5BrVebo3vCmwq';\r\n+const baseUrl = 'http://www.osamapro.online/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n const searchUrl = '$baseUrl/search';\r\n \r\n"
+                },
+                {
+                    "date": 1691173983828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import 'package:flutter/material.dart';\r\n \r\n-// endpoints==================\r\n+// ============= endpoints==================\r\n const baseUrl = 'http://www.osamapro.online/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n const searchUrl = '$baseUrl/search';\r\n"
+                },
+                {
+                    "date": 1691173994104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import 'package:flutter/material.dart';\r\n \r\n-// ============= endpoints==================\r\n+// ============= Endpoints==================\r\n const baseUrl = 'http://www.osamapro.online/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n const searchUrl = '$baseUrl/search';\r\n@@ -15,9 +15,9 @@\n const kSecondaryColor = Color(0xffFFD465);\r\n const kOnSecondaryColor = Color(0xff784E00);\r\n const kDangerColor = Color(0xffF56C61);\r\n \r\n-// Low Opacity Colors\r\n+//============= Low Opacity Colors=============\r\n const kLinksColor = Color(0xff807D99);\r\n const kLightPrimaryColor = Color(0xffE7E5F1);\r\n const kLightSecondaryColor = Color(0xffFFE6A6);\r\n const kLightDangerColor = Color(0xffFEE2E7);\r\n"
+                },
+                {
+                    "date": 1691174000945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,15 +9,14 @@\n // ============= STYLE CONSTS ==============\r\n \r\n const kScaffoldColor = Color(0xffFDFDFD);\r\n const kRedColor = Color(0xffA90606);\r\n-\r\n const kPrimaryColor = Color(0xff2D2B4E);\r\n const kSecondaryColor = Color(0xffFFD465);\r\n const kOnSecondaryColor = Color(0xff784E00);\r\n const kDangerColor = Color(0xffF56C61);\r\n \r\n-//============= Low Opacity Colors=============\r\n+//============= Low Opacity Colors =============\r\n const kLinksColor = Color(0xff807D99);\r\n const kLightPrimaryColor = Color(0xffE7E5F1);\r\n const kLightSecondaryColor = Color(0xffFFE6A6);\r\n const kLightDangerColor = Color(0xffFEE2E7);\r\n"
+                },
+                {
+                    "date": 1691174025147,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import 'package:flutter/material.dart';\r\n \r\n-// ============= Endpoints==================\r\n+// ============= Endpoints ==================\r\n const baseUrl = 'http://www.osamapro.online/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n const searchUrl = '$baseUrl/search';\r\n"
+                },
+                {
+                    "date": 1691180107245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,24 @@\n+import 'package:flutter/material.dart';\r\n+\r\n+// ============= Endpoints ==================\r\n+const baseUrl = 'http://www.osamapro.online/api';\r\n+const loginUrl = '$baseUrl/login';\r\n+const linksUrl = '$baseUrl/links';\r\n+const searchUrl = '$baseUrl/search';\r\n+const \r\n+\r\n+// ============= STYLE CONSTS ==============\r\n+\r\n+const kScaffoldColor = Color(0xffFDFDFD);\r\n+const kRedColor = Color(0xffA90606);\r\n+const kPrimaryColor = Color(0xff2D2B4E);\r\n+const kSecondaryColor = Color(0xffFFD465);\r\n+const kOnSecondaryColor = Color(0xff784E00);\r\n+const kDangerColor = Color(0xffF56C61);\r\n+\r\n+//============= Low Opacity Colors =============\r\n+const kLinksColor = Color(0xff807D99);\r\n+const kLightPrimaryColor = Color(0xffE7E5F1);\r\n+const kLightSecondaryColor = Color(0xffFFE6A6);\r\n+const kLightDangerColor = Color(0xffFEE2E7);\r\n+const kOnLightDangerColor = Color(0xff783341);\r\n"
+                },
+                {
+                    "date": 1691180113364,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const baseUrl = 'http://www.osamapro.online/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n const searchUrl = '$baseUrl/search';\r\n-const \r\n+const editLinkUrl = \r\n \r\n // ============= STYLE CONSTS ==============\r\n \r\n const kScaffoldColor = Color(0xffFDFDFD);\r\n@@ -21,27 +21,4 @@\n const kLightPrimaryColor = Color(0xffE7E5F1);\r\n const kLightSecondaryColor = Color(0xffFFE6A6);\r\n const kLightDangerColor = Color(0xffFEE2E7);\r\n const kOnLightDangerColor = Color(0xff783341);\r\n-import 'package:flutter/material.dart';\r\n-\r\n-// ============= Endpoints ==================\r\n-const baseUrl = 'http://www.osamapro.online/api';\r\n-const loginUrl = '$baseUrl/login';\r\n-const linksUrl = '$baseUrl/links';\r\n-const searchUrl = '$baseUrl/search';\r\n-\r\n-// ============= STYLE CONSTS ==============\r\n-\r\n-const kScaffoldColor = Color(0xffFDFDFD);\r\n-const kRedColor = Color(0xffA90606);\r\n-const kPrimaryColor = Color(0xff2D2B4E);\r\n-const kSecondaryColor = Color(0xffFFD465);\r\n-const kOnSecondaryColor = Color(0xff784E00);\r\n-const kDangerColor = Color(0xffF56C61);\r\n-\r\n-//============= Low Opacity Colors =============\r\n-const kLinksColor = Color(0xff807D99);\r\n-const kLightPrimaryColor = Color(0xffE7E5F1);\r\n-const kLightSecondaryColor = Color(0xffFFE6A6);\r\n-const kLightDangerColor = Color(0xffFEE2E7);\r\n-const kOnLightDangerColor = Color(0xff783341);\r\n"
+                },
+                {
+                    "date": 1691180124167,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const baseUrl = 'http://www.osamapro.online/api';\r\n const loginUrl = '$baseUrl/login';\r\n const linksUrl = '$baseUrl/links';\r\n const searchUrl = '$baseUrl/search';\r\n-const editLinkUrl = '$';\r\n+const editLinkUrl = '$b';\r\n \r\n // ============= STYLE CONSTS ==============\r\n \r\n const kScaffoldColor = Color(0xffFDFDFD);\r\n"
+                },
+                {
+                    "date": 1691182494729,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n const kOnSecondaryColor = Color(0xff784E00);\r\n const kDangerColor = Color(0xffF56C61);\r\n \r\n //============= Low Opacity Colors =============\r\n-const kLinksColor = Color(0xff807D99);\r\n+const kLinksColor = Color.fromARGB(255, 147, 145, 167);\r\n const kLightPrimaryColor = Color(0xffE7E5F1);\r\n const kLightSecondaryColor = Color(0xffFFE6A6);\r\n const kLightDangerColor = Color(0xffFEE2E7);\r\n const kOnLightDangerColor = Color(0xff783341);\r\n"
+                }
+            ],
+            "date": 1691064358245,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\n// endpoints==================\r\nconst baseUrl = 'http://192.168.88.245:8000/api';\r\nconst loginUrl = '$baseUrl/login';\r\nconst linksUrl = '$baseUrl/links';\r\n\r\n// ============= STYLE CONSTS ==============\r\n\r\nconst kScaffoldColor = Color(0xffFDFDFD);\r\nconst kRedColor = Color(0xffA90606);\r\n\r\nconst kPrimaryColor = Color(0xff2D2B4E);\r\nconst kSecondaryColor = Color(0xffFFD465);\r\nconst kOnSecondaryColor = Color(0xff784E00);\r\nconst kDangerColor = Color(0xffF56C61);\r\n\r\n// Low Opacity Colors\r\nconst kLinksColor = Color(0xff807D99);\r\nconst kLightPrimaryColor = Color(0xffE7E5F1);\r\nconst kLightSecondaryColor = Color(0xffFFE6A6);\r\nconst kLightDangerColor = Color(0xffFEE2E7);\r\nconst kOnLightDangerColor = Color(0xff783341);\r\n"
+        }
+    ]
+}

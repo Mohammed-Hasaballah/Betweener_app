@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/views/main_app_view.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1691066980176,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1691066980176,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\nimport 'package:tt9_betweener_challenge/views/home_view.dart';\r\nimport 'package:tt9_betweener_challenge/views/profile_view.dart';\r\nimport 'package:tt9_betweener_challenge/views/receive_view.dart';\r\nimport 'package:tt9_betweener_challenge/views/widgets/custom_floating_nav_bar.dart';\r\n\r\nclass MainAppView extends StatefulWidget {\r\n  static String id = '/mainAppView';\r\n\r\n  const MainAppView({super.key});\r\n\r\n  @override\r\n  State<MainAppView> createState() => _MainAppViewState();\r\n}\r\n\r\nclass _MainAppViewState extends State<MainAppView> {\r\n  int _currentIndex = 1;\r\n\r\n  late List<Widget?> screensList = [\r\n    const ReceiveView(),\r\n    const HomeView(),\r\n    const ProfileView()\r\n  ];\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold(\r\n       \r\n      body: screensList[_currentIndex],\r\n      extendBody: true,\r\n      bottomNavigationBar: CustomFloatingNavBar(\r\n        currentIndex: _currentIndex,\r\n        onTap: (index) {\r\n          setState(() {\r\n            _currentIndex = index;\r\n          });\r\n        },\r\n      ),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

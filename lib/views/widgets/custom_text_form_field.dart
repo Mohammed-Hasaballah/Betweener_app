@@ -5,6 +5,7 @@ class CustomTextFormField extends StatelessWidget {
   final String label;
   final String? hint;
   final TextEditingController? controller;
+  final String? initialValue;
   final bool password;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
@@ -17,7 +18,8 @@ class CustomTextFormField extends StatelessWidget {
       this.password = false,
       this.keyboardType,
       this.validator,
-      this.autofillHints});
+      this.autofillHints,
+      this.initialValue});
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
           height: 12,
         ),
         TextFormField(
+          initialValue: initialValue,
           keyboardType: keyboardType,
           controller: controller,
           validator: validator,

@@ -1,0 +1,42 @@
+{
+    "sourceFile": "lib/views/profile_view.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1691160371010,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1691160382687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,9 @@\n   const ProfileView({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Scaffold('profile ');\r\n+    return const Scaffold(\r\n+      \r\n+    );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691160388409,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return const Scaffold(\r\n-      \r\n+      floatingActionButton: F,\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691160394854,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,8 @@\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return const Scaffold(\r\n-      floatingActionButton: F,\r\n+      floatingActionButton: FloatingActionButton(onPressed: (){}),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691160405165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   const ProfileView({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return const Scaffold(\r\n+    return  Scaffold(\r\n       floatingActionButton: FloatingActionButton(onPressed: (){}),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691160418411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,12 @@\n   const ProfileView({super.key});\r\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n-    return Scaffold(\r\n-      floatingActionButton: FloatingActionButton(onPressed: () {}),\r\n+    return Padding(\r\n+      padding: const EdgeInsets.all(8.0),\r\n+      child: Scaffold(\r\n+        floatingActionButton: FloatingActionButton(onPressed: () {}),\r\n+      ),\r\n     );\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691160431339,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \r\n   @override\r\n   Widget build(BuildContext context) {\r\n     return Padding(\r\n-      padding: const EdgeInsets.symmetric(horizontal: ),\r\n+      padding: const EdgeInsets.symmetric(horizontal: 8 , vertical: 30),\r\n       child: Scaffold(\r\n         floatingActionButton: FloatingActionButton(onPressed: () {}),\r\n       ),\r\n     );\r\n"
+                }
+            ],
+            "date": 1691160371010,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\n\r\nclass ProfileView extends StatelessWidget {\r\n  static String id = '/profileView';\r\n\r\n  const ProfileView({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return const Scaffold('profile ');\r\n  }\r\n}\r\n"
+        }
+    ]
+}

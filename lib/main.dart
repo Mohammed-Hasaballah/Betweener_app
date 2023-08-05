@@ -6,6 +6,8 @@ import 'package:tt9_betweener_challenge/views/main_app_view.dart';
 import 'package:tt9_betweener_challenge/views/profile_view.dart';
 import 'package:tt9_betweener_challenge/views/receive_view.dart';
 import 'package:tt9_betweener_challenge/views/register_view.dart';
+import 'package:tt9_betweener_challenge/views/add_link_view.dart';
+import 'package:tt9_betweener_challenge/views/search_view.dart';
 
 import 'constants.dart';
 
@@ -41,6 +43,9 @@ class MyApp extends StatelessWidget {
         MainAppView.id: (context) => const MainAppView(),
         ProfileView.id: (context) => const ProfileView(),
         ReceiveView.id: (context) => const ReceiveView(),
+        AddLinkView.id: (context) => const AddLinkView(),
+        SearchView.id: (context) => const SearchView(),
+       
       },
     );
   }

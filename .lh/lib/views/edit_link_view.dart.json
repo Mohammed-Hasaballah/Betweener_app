@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/views/edit_link_view.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1691160228550,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1691160228550,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\nimport 'package:tt9_betweener_challenge/views/widgets/secondary_button_widget.dart';\r\n\r\nimport 'widgets/custom_text_form_field.dart';\r\n\r\nclass EditLinkView extends StatefulWidget {\r\n  static String id = '/editLinkView';\r\n  const EditLinkView({super.key});\r\n\r\n  @override\r\n  State<EditLinkView> createState() => _EditLinkViewState();\r\n}\r\n\r\nclass _EditLinkViewState extends State<EditLinkView> {\r\n  TextEditingController titleController = TextEditingController();\r\n  TextEditingController linkController = TextEditingController();\r\n  final _formKey = GlobalKey<FormState>();\r\n\r\n  void submitEditLink() {\r\n    // if (_formKey.currentState!.validate()) {\r\n    //   final body = {'title': titleController.text, 'link': linkController.text};\r\n\r\n    //   addlink(body).then((user) async {\r\n    //     if (mounted) {\r\n    //       Navigator.pop(context, true);\r\n    //     }\r\n    //   }).catchError((err) {\r\n    //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(\r\n    //       content: Text(err.toString()),\r\n    //       backgroundColor: Colors.red,\r\n    //     ));\r\n    //   });\r\n    // }\r\n  }\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Scaffold(\r\n      appBar: AppBar(\r\n        backgroundColor: const Color.fromARGB(255, 197, 193, 193),\r\n        title: const Text('Edit Link'),\r\n      ),\r\n      body: SizedBox(\r\n        height: MediaQuery.of(context).size.height,\r\n        child: Padding(\r\n          padding: const EdgeInsets.all(40.0),\r\n          child: Form(\r\n              key: _formKey,\r\n              child: Column(\r\n                children: [\r\n                  CustomTextFormField(\r\n                    controller: titleController,\r\n                    hint: 'snapchat',\r\n                    label: 'Title',\r\n                    validator: (value) {\r\n                      if (value == null || value.isEmpty) {\r\n                        return 'please enter the email';\r\n                      } else if (value.isEmpty) {\r\n                        return 'please enter a valid email';\r\n                      }\r\n                      return null;\r\n                    },\r\n                  ),\r\n                  const SizedBox(\r\n                    height: 14,\r\n                  ),\r\n                  CustomTextFormField(\r\n                    controller: linkController,\r\n                    hint: 'http:\\\\\\\\example.com',\r\n                    label: 'Link',\r\n                    validator: (value) {\r\n                      if (value == null || value.isEmpty) {\r\n                        return 'please enter the password';\r\n                      }\r\n                      return null;\r\n                    },\r\n                  ),\r\n                  const SizedBox(\r\n                    height: 24,\r\n                  ),\r\n                  SecondaryButtonWidget(\r\n                    onTap: submitEditLink,\r\n                    text: 'Add',\r\n                    width: 100,\r\n                  ),\r\n                ],\r\n              )),\r\n        ),\r\n      ),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

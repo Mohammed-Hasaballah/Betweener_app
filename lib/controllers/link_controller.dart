@@ -17,8 +17,6 @@ Future<List<Link>> getLinks(context) async {
   final response = await http.get(Uri.parse(linksUrl),
       headers: {'Authorization': 'Bearer ${user.token}'});
 
-  print(jsonDecode(response.body)['links']);
-
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body)['links'] as List<dynamic>;
 
@@ -30,4 +28,32 @@ Future<List<Link>> getLinks(context) async {
   }
 
   return Future.error('Somthing wrong');
+}
+
+Future<bool> addLink(Map<String, String> body) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  User user = userFromJson(prefs.getString('user')!);
+
+  final response = await http.post(Uri.parse(linksUrl),
+      body: body, headers: {'Authorization': 'Bearer ${user.token}'});
+
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    throw Exception('Failed to add');
+  }
+}
+
+Future<bool> editLink(Map<String, dynamic> body, int linkId) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  User user = userFromJson(prefs.getString('user')!);
+
+  final response = await http.put(Uri.parse('$linksUrl/$linkId'),
+      body: body, headers: {'Authorization': 'Bearer ${user.token}'});
+
+  if (response.statusCode == 200) {
+    return true;
+  } else {
+    throw Exception('Failed to add');
+  }
 }

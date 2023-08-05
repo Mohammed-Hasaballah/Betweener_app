@@ -39,6 +39,8 @@ dependencies:
   email_validator: ^2.1.17
   http:
   shared_preferences: ^2.2.0
+  flutter_slidable: ^3.0.0
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

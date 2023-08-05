@@ -10,7 +10,7 @@ import 'package:tt9_betweener_challenge/views/widgets/custom_text_form_field.dar
 import 'package:tt9_betweener_challenge/views/widgets/primary_outlined_button_widget.dart';
 import 'package:tt9_betweener_challenge/views/widgets/secondary_button_widget.dart';
 
-import '../controllers/auth_controller.dart';
+import '../controllers/login_controller.dart';
 import 'widgets/google_button_widget.dart';
 
 class LoginView extends StatefulWidget {
