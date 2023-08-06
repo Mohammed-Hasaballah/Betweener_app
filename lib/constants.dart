@@ -7,6 +7,7 @@ const linksUrl = '$baseUrl/links';
 const searchUrl = '$baseUrl/search';
 const followUrl = '$baseUrl/follow';
 const addUserUrl = '$baseUrl/follow';
+const registerUrl = '$baseUrl/register';
 // ============= STYLE CONSTS ==============
 
 const kScaffoldColor = Color(0xffFDFDFD);
@@ -23,3 +24,12 @@ const kLightPrimaryColor = Color(0xffE7E5F1);
 const kLightSecondaryColor = Color(0xffFFE6A6);
 const kLightDangerColor = Color(0xffFEE2E7);
 const kOnLightDangerColor = Color(0xff783341);
+void showAlert(context, {required String message, bool isError = true}) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(
+      message,
+      style: const TextStyle(color: Colors.white),
+    ),
+    backgroundColor: isError ? Colors.red : Colors.green,
+  ));
+}

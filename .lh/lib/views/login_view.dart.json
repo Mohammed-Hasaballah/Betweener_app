@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1691159225229,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1691322386758,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n import 'package:tt9_betweener_challenge/views/widgets/custom_text_form_field.dart';\r\n import 'package:tt9_betweener_challenge/views/widgets/primary_outlined_button_widget.dart';\r\n import 'package:tt9_betweener_challenge/views/widgets/secondary_button_widget.dart';\r\n \r\n-import '../controllers/login_controller.dart';\r\n+import '../controllers/auth_controller.dart';\r\n import 'widgets/google_button_widget.dart';\r\n \r\n class LoginView extends StatefulWidget {\r\n   static String id = '/loginView';\r\n"
                 }
             ],
             "date": 1691159225229,

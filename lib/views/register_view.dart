@@ -5,6 +5,8 @@ import 'package:tt9_betweener_challenge/views/widgets/custom_text_form_field.dar
 import 'package:tt9_betweener_challenge/views/widgets/secondary_button_widget.dart';
 
 import '../../views/widgets/google_button_widget.dart';
+import '../constants.dart';
+import '../controllers/auth_controller.dart';
 
 class RegisterView extends StatefulWidget {
   static String id = '/registerView';
@@ -86,7 +88,16 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   SecondaryButtonWidget(
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {}
+                        if (_formKey.currentState!.validate()) {
+                          register(context,
+                                  email: emailController.text,
+                                  name: nameController.text,
+                                  password: passwordController.text,
+                                  passwordConfirmation: passwordController.text)
+                              .catchError((e) {
+                            showAlert(context, message: e.toString());
+                          });
+                        }
                       },
                       text: 'REGISTER'),
                   const SizedBox(

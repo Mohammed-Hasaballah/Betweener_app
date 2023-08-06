@@ -1,0 +1,50 @@
+{
+    "sourceFile": "lib/controllers/auth_controller.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1691322392083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1691322399663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import 'package:flutter/material.dart';\r\n import 'package:http/http.dart' as http;\r\n import 'package:tt9_betweener_challenge/constants.dart';\r\n import 'package:tt9_betweener_challenge/models/user.dart';\r\n \r\n"
+                },
+                {
+                    "date": 1691322416555,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,10 @@\n import 'package:http/http.dart' as http;\r\n import 'package:tt9_betweener_challenge/constants.dart';\r\n import 'package:tt9_betweener_challenge/models/user.dart';\r\n \r\n+import '../views/login_view.dart';\r\n+\r\n Future<User> login(Map<String, String> body) async {\r\n   final response = await http.post(\r\n     Uri.parse(loginUrl),\r\n     body: body,\r\n"
+                },
+                {
+                    "date": 1691322441168,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n     required String passwordConfirmation,\r\n   }) async {\r\n     http.Response response = await http.post(\r\n         Uri.parse(\r\n-          ApiSettings.register,\r\n+           ,\r\n         ),\r\n         body: {\r\n           \"name\": name,\r\n           \"email\": email,\r\n"
+                },
+                {
+                    "date": 1691322482199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n     required String passwordConfirmation,\r\n   }) async {\r\n     http.Response response = await http.post(\r\n         Uri.parse(\r\n-           ,\r\n+         registerUrl\r\n         ),\r\n         body: {\r\n           \"name\": name,\r\n           \"email\": email,\r\n"
+                },
+                {
+                    "date": 1691322502315,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,29 +16,26 @@\n   } else {\r\n     throw Exception('Failed to login');\r\n   }\r\n }\r\n+\r\n Future<void> register(\r\n-    BuildContext context, {\r\n-    required String email,\r\n-    required String name,\r\n-    required String password,\r\n-    required String passwordConfirmation,\r\n-  }) async {\r\n-    http.Response response = await http.post(\r\n-        Uri.parse(\r\n-         registerUrl\r\n-        ),\r\n-        body: {\r\n-          \"name\": name,\r\n-          \"email\": email,\r\n-          \"password\": password,\r\n-          \"password_confirmation\": passwordConfirmation\r\n-        });\r\n-    if (response.statusCode == 201) {\r\n-      Navigator.pushReplacementNamed(context, LoginView.id);\r\n-    } else if (response.statusCode == 200) {\r\n-      showAlert(context, message: 'This email is used before');\r\n-    } else {\r\n-      return Future.error('failed to register');\r\n-    }\r\n\\ No newline at end of file\n-  }\n+  BuildContext context, {\r\n+  required String email,\r\n+  required String name,\r\n+  required String password,\r\n+  required String passwordConfirmation,\r\n+}) async {\r\n+  http.Response response = await http.post(Uri.parse(registerUrl), body: {\r\n+    \"name\": name,\r\n+    \"email\": email,\r\n+    \"password\": password,\r\n+    \"password_confirmation\": passwordConfirmation\r\n+  });\r\n+  if (response.statusCode == 201) {\r\n+    Navigator.pushReplacementNamed(context, LoginView.id);\r\n+  } else if (response.statusCode == 200) {\r\n+    Show\r\n+  } else {\r\n+    return Future.error('failed to register');\r\n+  }\r\n+}\r\n"
+                },
+                {
+                    "date": 1691322508658,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n   });\r\n   if (response.statusCode == 201) {\r\n     Navigator.pushReplacementNamed(context, LoginView.id);\r\n   } else if (response.statusCode == 200) {\r\n-    Show\r\n+    showDialog(context: context, builder: builder);\r\n   } else {\r\n     return Future.error('failed to register');\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691322514914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,11 @@\n   });\r\n   if (response.statusCode == 201) {\r\n     Navigator.pushReplacementNamed(context, LoginView.id);\r\n   } else if (response.statusCode == 200) {\r\n-    showDialog(context: context, builder: builder);\r\n+    showDialog(context: context, builder: (){\r\n+      \r\n+    });\r\n   } else {\r\n     return Future.error('failed to register');\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1691322546949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,11 +33,9 @@\n   });\r\n   if (response.statusCode == 201) {\r\n     Navigator.pushReplacementNamed(context, LoginView.id);\r\n   } else if (response.statusCode == 200) {\r\n-    showDialog(context: context, builder: (){\r\n-      \r\n-    });\r\n+    showAlert(context, message: 'This email is used before');\r\n   } else {\r\n     return Future.error('failed to register');\r\n   }\r\n }\r\n"
+                }
+            ],
+            "date": 1691322392083,
+            "name": "Commit-0",
+            "content": "import 'package:http/http.dart' as http;\r\nimport 'package:tt9_betweener_challenge/constants.dart';\r\nimport 'package:tt9_betweener_challenge/models/user.dart';\r\n\r\nFuture<User> login(Map<String, String> body) async {\r\n  final response = await http.post(\r\n    Uri.parse(loginUrl),\r\n    body: body,\r\n  );\r\n\r\n  if (response.statusCode == 200) {\r\n    return userFromJson(response.body);\r\n  } else {\r\n    throw Exception('Failed to login');\r\n  }\r\n}\r\nFuture<void> register(\r\n    BuildContext context, {\r\n    required String email,\r\n    required String name,\r\n    required String password,\r\n    required String passwordConfirmation,\r\n  }) async {\r\n    http.Response response = await http.post(\r\n        Uri.parse(\r\n          ApiSettings.register,\r\n        ),\r\n        body: {\r\n          \"name\": name,\r\n          \"email\": email,\r\n          \"password\": password,\r\n          \"password_confirmation\": passwordConfirmation\r\n        });\r\n    if (response.statusCode == 201) {\r\n      Navigator.pushReplacementNamed(context, LoginView.id);\r\n    } else if (response.statusCode == 200) {\r\n      showAlert(context, message: 'This email is used before');\r\n    } else {\r\n      return Future.error('failed to register');\r\n    }\r\n  }"
+        }
+    ]
+}
