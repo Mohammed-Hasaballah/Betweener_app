@@ -1,18 +1,19 @@
-import 'dart:convert';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../constants.dart';
 import '../controllers/follow_controller.dart';
 import '../models/link.dart';
 import '../models/user.dart';
-import 'package:http/http.dart' as http;
 
 class FriendProfileView extends StatefulWidget {
   static String id = '/friendProfileView';
   final UserClass userData;
-  const FriendProfileView({super.key, required this.userData});
+  final List<dynamic>? followingIds;
+  const FriendProfileView({
+    super.key,
+    required this.userData,
+    required this.followingIds,
+  });
 
   @override
   State<FriendProfileView> createState() => _FriendProfileViewState();
@@ -24,9 +25,6 @@ class _FriendProfileViewState extends State<FriendProfileView> {
   late String name;
   late String email;
   late int userId;
-  late Future<List<int>> ids;
-  List<int> followingIdsList = [];
-  bool isFollowingChanged = false;
 
   void submitAddUser() async {
     final body = {
@@ -42,34 +40,16 @@ class _FriendProfileViewState extends State<FriendProfileView> {
     });
   }
 
-  List<dynamic>? followingList;
   bool isFollowed = false;
-  Future<void> getFollowing() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    User user = userFromJson(prefs.getString('user')!);
-    final response = await http.get(Uri.parse(addUserUrl),
-        headers: {'Authorization': 'Bearer ${user.token}'});
-    if (response.statusCode == 200) {
-      followingList = jsonDecode(response.body)['following'];
-      followingList = followingList!.map((e) {
-        return e['id'];
-      }).toList();
-      debugPrint(followingList.toString());
-      isFollowed = followingList!.contains(userId);
-      setState(() {});
-    } else {
-      throw Exception('Failed search');
-    }
-  }
 
   @override
   void initState() {
-    getFollowing();
     user = widget.userData;
     name = user.name!;
     email = user.email!;
     links = user.links ?? [];
     userId = user.id!;
+    isFollowed = widget.followingIds!.contains(userId);
     super.initState();
   }
 

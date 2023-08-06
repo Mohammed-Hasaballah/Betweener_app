@@ -68,3 +68,20 @@ Future<List<int>> getFollowingIds() async {
 
   return Future.error('Somthing wrong');
 }
+
+Future<List<dynamic>> getFollowingList() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  User user = userFromJson(prefs.getString('user')!);
+  final response = await http.get(Uri.parse(addUserUrl),
+      headers: {'Authorization': 'Bearer ${user.token}'});
+  if (response.statusCode == 200) {
+    List<dynamic>? followingList;
+    followingList = jsonDecode(response.body)['following'];
+    followingList = followingList!.map((e) {
+      return e['id'];
+    }).toList();
+    return followingList;
+  } else {
+    throw Exception('Failed getting Following');
+  }
+}

@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tt9_betweener_challenge/models/user.dart';
 import 'package:tt9_betweener_challenge/views/friend_profile_view.dart';
 import 'package:tt9_betweener_challenge/views/widgets/secondary_button_widget.dart';
-
+import 'package:http/http.dart' as http;
+import '../constants.dart';
 import '../controllers/search_controller.dart';
 import 'widgets/custom_text_form_field.dart';
 
@@ -38,8 +42,28 @@ class _SearchViewState extends State<SearchView> {
     }
   }
 
+  List<dynamic>? followingList;
+
+  Future<void> getFollowing() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    User user = userFromJson(prefs.getString('user')!);
+    final response = await http.get(Uri.parse(addUserUrl),
+        headers: {'Authorization': 'Bearer ${user.token}'});
+    if (response.statusCode == 200) {
+      followingList = jsonDecode(response.body)['following'];
+      followingList = followingList!.map((e) {
+        return e['id'];
+      }).toList();
+      debugPrint(followingList.toString());
+      setState(() {});
+    } else {
+      throw Exception('Failed Getting Following');
+    }
+  }
+
   @override
   void initState() {
+    getFollowing();
     super.initState();
   }
 
@@ -60,7 +84,7 @@ class _SearchViewState extends State<SearchView> {
                 children: [
                   CustomTextFormField(
                     controller: userNameController,
-                    hint: 'ahmed',
+                    hint: 'username',
                     label: 'username',
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -98,6 +122,7 @@ class _SearchViewState extends State<SearchView> {
                                 MaterialPageRoute(
                                     builder: (context) => FriendProfileView(
                                           userData: user,
+                                          followingIds: followingList,
                                         )));
                           },
                           title: Text(
