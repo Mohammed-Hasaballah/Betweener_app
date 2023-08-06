@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../constants.dart';
 import '../controllers/follow_controller.dart';
 import '../models/link.dart';
 import '../models/user.dart';
+import 'package:http/http.dart' as http;
 
 class FriendProfileView extends StatefulWidget {
   static String id = '/friendProfileView';
@@ -23,7 +27,7 @@ class _FriendProfileViewState extends State<FriendProfileView> {
   late Future<List<int>> ids;
   List<int> followingIdsList = [];
   bool isFollowingChanged = false;
-  late bool isFollowed;
+
   void submitAddUser() async {
     final body = {
       'followee_id': userId.toString(),
@@ -38,9 +42,29 @@ class _FriendProfileViewState extends State<FriendProfileView> {
     });
   }
 
+  List<dynamic>? followingList;
+  bool isFollowed = false;
+  Future<void> getFollowing() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    User user = userFromJson(prefs.getString('user')!);
+    final response = await http.get(Uri.parse(addUserUrl),
+        headers: {'Authorization': 'Bearer ${user.token}'});
+    if (response.statusCode == 200) {
+      followingList = jsonDecode(response.body)['following'];
+      followingList = followingList!.map((e) {
+        return e['id'];
+      }).toList();
+      debugPrint(followingList.toString());
+      isFollowed = followingList!.contains(userId);
+      setState(() {});
+    } else {
+      throw Exception('Failed search');
+    }
+  }
+
   @override
   void initState() {
-    ids = getFollowingIds();
+    getFollowing();
     user = widget.userData;
     name = user.name!;
     email = user.email!;
@@ -71,8 +95,12 @@ class _FriendProfileViewState extends State<FriendProfileView> {
               ),
               Container(
                 margin: const EdgeInsets.only(left: 40),
-                child: Text(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: AutoSizeText(
                   name,
+                  maxLines: 1,
+                  maxFontSize: 30,
+                  minFontSize: 20,
                   style: const TextStyle(
                     fontSize: 30,
                     color: kPrimaryColor,
@@ -133,12 +161,19 @@ class _FriendProfileViewState extends State<FriendProfileView> {
                           height: 8,
                         ),
                         InkWell(
-                          onTap: submitAddUser,
+                          onTap: isFollowed
+                              ? null
+                              : () {
+                                  submitAddUser();
+                                  isFollowed = !isFollowed;
+                                  // getFollowing();
+                                  setState(() {});
+                                },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 6),
                             decoration: BoxDecoration(
-                              color: kSecondaryColor,
+                              color: isFollowed ? Colors.grey : kSecondaryColor,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: isFollowed

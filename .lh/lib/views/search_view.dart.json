@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 17,
+            "activePatchIndex": 18,
             "patches": [
                 {
                     "date": 1691160217459,
@@ -76,6 +76,10 @@
                 {
                     "date": 1691264542381,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -96,9 +96,9 @@\n                             Navigator.push(\r\n                                 context,\r\n                                 MaterialPageRoute(\r\n                                     builder: (context) =>\r\n-                                        const FriendProfileView(user: user,)));\r\n+                                          FriendProfileView(user: user,)));\r\n                           },\r\n                           title: Text(\r\n                             user.name!,\r\n                             style: const TextStyle(color: Colors.black),\r\n"
+                },
+                {
+                    "date": 1691310375494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -92,9 +92,11 @@\n                       itemBuilder: (context, index) {\r\n                         final user = searchedUser[index];\r\n                         return ListTile(\r\n                           onTap: () {\r\n-                            set\r\n+                            setState(() {\r\n+                              \r\n+                            });\r\n                             Navigator.push(\r\n                                 context,\r\n                                 MaterialPageRoute(\r\n                                     builder: (context) => FriendProfileView(\r\n"
                 }
             ],
             "date": 1691160217459,
